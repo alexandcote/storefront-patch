@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    <script src="./dist/storefront.js"></script>
+    <script>
+      async function malicious() {
+        try {
+          console.log("Fetching malicious host");
+
+          const response = await fetch("https://malicious.com");
+          console.log(response);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      async function valid() {
+        try {
+          console.log("Fetching valid host");
+
+          const response = await fetch("http://localhost:5173");
+          console.log(response);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      async function main() {
+        await malicious();
+        await valid();
+      }
+      main();
+    </script>
+  </head>
+  <body></body>
+</html>
